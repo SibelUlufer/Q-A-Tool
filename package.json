@@ -1,0 +1,27 @@
+{
+  "name": "qa-engineer-assignment",
+  "version": "1.0.0",
+  "description": "Welcome to the QA Engineer Technical Assignment. We expect the work to take a few hours, and we thank you in advance for taking that time for us!",
+  "main": "bundle.js",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "stop-server": "pkill -f 'python3 -m http.server 8000'",
+    "test:e2e": "npx playwright test tests/ ",
+    "test:ui": "npx playwright test --ui",
+    "test:report": "npx playwright show-report test-reports"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "@playwright/test": "^1.43.1",
+    "@types/node": "^20.12.8"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.11",
+    "faker": "^5.5.3",
+    "playwright": "^1.43.1",
+    "typescript": "^5.4.5"
+  }
+}
