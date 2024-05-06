@@ -1,5 +1,5 @@
 
-export const testData =[
+export const testData = [
   {
     "questionText": "How many planets are there in the solar system?",
     "answerText": "There are eight planets in the solar system."

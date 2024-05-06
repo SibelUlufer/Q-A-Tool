@@ -29,7 +29,7 @@ test.describe("Q/A Tool tests", () => {
       const randomAnswerText = faker.lorem.sentences(2)
       try {
         await createQuestions(page, randomQuestionText, randomAnswerText)//creates questions, checks question amount in sidebar
-         // clicks on each question
+        // clicks on each question
         const question = page.locator(".question").nth(i);
         await question.click();
         const questionText = await question.innerText(); // extracts question+answer texts of the clicked question
@@ -48,7 +48,7 @@ test.describe("Q/A Tool tests", () => {
 
   test("Sort the questions", async ({ page }) => {
     for (let i = 1; i <= 5; i++) { // set question amount to be created
-      const randomQuestionText = faker.word.sample(10).charAt(0).toUpperCase()+ faker.word.sample(10).slice(1) // Capital first letter
+      const randomQuestionText = faker.word.sample(10).charAt(0).toUpperCase() + faker.word.sample(10).slice(1) // Capital first letter
       const randomAnswerText = faker.lorem.sentences(2)
       await createQuestions(page, randomQuestionText, randomAnswerText)//creates questions, checks question amount in sidebar
     }

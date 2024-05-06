@@ -1,25 +1,89 @@
-# Quality Assurance Engineer Assignment
-Welcome to the QA Engineer Technical Assignment. We expect the work to take a few hours, and we thank
-you in advance for taking that time for us!
+# QA Tool Automation Project Documentation
 
-This test consists of two parts:  a coding part as an Automation Testing Assignment an a written part as a Documentation.
+This documentation provides an in-depth overview of the Q/A Tool automation project, covering various aspects such as analysis, planning, technical solution selection, design patterns, implementation, execution, and more.
 
+## Project Overview
 
-## Test Automation:
+The Q/A Tool automation project aims to automate testing scenarios for a web application. The project utilizes Playwright with typescript.
 
-For the coding part you can clone this repo with `--bare` (and later push the solution with `--mirror`  to a new repo in your accounts) and you'll have a working frontend app by running a python http server:
+## Analysis
 
-```
-$ python -m http.server 8000
-```
+Before initiating the automation project, a thorough analysis of the web application was conducted to identify key functionalities, user interactions, and testing requirements. This analysis helped in understanding the scope of automation and defining the test scenarios.
 
-You now have a working frontend app. Your challenge is to write some kind of automated user acceptence tests for this app and share your repo with us.
+## Planning
 
-For technical solution, use JS/TS and Playwright framework, given we use these internally. Take this chance to show your knowledge not only regarding coding but also regarding integrating different features to an automation project as reporting, parallel execution, retries, screenshots and logging when failing, etc.
+The planning phase involved defining test objectives, prioritizing test cases, and establishing a test strategy. Test scenarios were categorized based on their criticality and frequency of use.
 
+## Technical Solution Selection
 
-## Documentation:
+Several automation tools were evaluated before selecting Playwright as the preferred tool for the project. Playwright's cross-browser support, robust APIs, and ease of use made it suitable for automating testing scenarios across different browsers and devices.
 
-For the written part, we would like to receive a PDF, slide presentation or preferably an MD file (readme) with your insights. We’ll evaluate how is your way of working when dealing with an automation challenge, but you can explore this opportunity beyond the scope of this simple challenge by explaining how you proceed with the analysis of this project, planning of your tasks, technical solution selection, design pattern choice, implementation, execution, etc.
+## Design Pattern Choice
 
-You can think about this written part both as the presentation of the project to a stakeholder and as the technical documentation for the team who could join you for maintaining or extending the project with instructions about how to use it.
+The automation project follows a modular and maintainable design pattern to ensure scalability and reusability of test code. Data Driven Testing is adopted to test the web app.
+Test cases related to create process conducted in two different process;
+  - Dynamically created question and answers
+  - Set of questions and answers in testData.ts file
+
+## Test Structure
+
+The project consists of several test cases, each focusing on specific functionalities of the Q/A tool application. The tests are structured using the Playwright testing framework.
+It is intended to create test data in the number of asked to be able to test the low-high volume.
+- test artifacts folder collects videos, screenshots on failure, and retry
+- error logs is on console when test fails
+- takes full page screenshot after each test and collects under screenshots folder based on the date-time folder
+
+### Test Setup
+
+Before each test case, the application is launched, and the necessary assertions are made to ensure the application's initial state.
+
+### Test Cases
+
+1. **Create question(s) dynamically and verify**
+   - This test case focuses on creating questions dynamically within the Q/A tool application and verifying their creation.
+   - It utilizes the `createQuestions` helper function to create questions.
+   - Assertions are made to verify the successful creation of questions.
+
+2. **Remove Questions**
+   - This test case verifies the functionality to remove questions from the Q/A tool application.
+   - It utilizes the `removeQuestions` helper function to remove the questions and verify.
+   - It interacts with the "Remove questions" button and checks if the questions are removed as expected.
+   - Assertions are made to ensure the button's visibility and the absence of questions after removal.
+
+3. **Sort Questions**
+   - This test case tests the sorting functionality of questions within the Q/A tool application.
+   - It utilizes the `sortQuestions` helper function to sort and verify the questions.
+   - It creates a set of questions, triggers the sorting action, and verifies if the questions are sorted alphabetically.
+   - Assertions are made to compare the sorted list of questions with the expected order.
+
+4. **Not Create Question Without Q-A**
+   - This test case validates the behavior of the application when attempting to create a question without providing both question and answer inputs.
+   - It verifies if the application prevents the creation of questions in such scenarios.
+   - Assertions are made to check for the presence of error messages or warnings.
+
+5. **Create questions from test data file and verify**
+  - This test case focuses on creating questions from testData.ts file within the Q/A tool application and verifying their creation.
+   - It utilizes the `createQuestions` helper function to create all questions.
+   - Assertions are made to verify the successful creation of questions.
+
+5. **Sort questions created from test data file**
+   - This test case tests the sorting functionality of questions within the Q/A tool application.
+    - It utilizes the `sortQuestions` helper function to sort and verify the questions.
+   - It creates a set of questions from testData.ts, triggers the sorting action, and verifies if the questions are sorted alphabetically.
+   - Assertions are made to compare the sorted list of questions with the expected order.
+
+## Implementation
+
+The implementation phase involved writing automated test scripts using Playwright's testing framework. Test scripts were organized into logical test cases, each focusing on specific application features. Helper functions and utilities were created to streamline common tasks and improve code reuse.
+
+## Execution
+
+Test execution was automated using Playwright's test runner, which provides detailed reports and insights into test results. Tests were executed across different browsers and platforms to ensure application compatibility and reliability.
+- `npm run start` to start the server
+- `npm run test:e2e` to run all tests for defined browsers
+- `npm run test:ui` to open the PW-UI
+- `npm run test:report` to open the HTML test report
+
+## Conclusion
+
+The Q/A Tool automation project demonstrates a systematic approach to automating testing scenarios for a web application. By leveraging Playwright's capabilities and following best practices in test automation, the project aims to enhance testing efficiency, reduce manual effort, and improve overall application quality.
